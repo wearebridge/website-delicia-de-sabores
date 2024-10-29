@@ -6,10 +6,15 @@ export const DeliveryFee: GlobalConfig = {
     label: "Taxa de entrega",
     fields: [
         {
-            name: 'whatsapp',
-            label: 'Valor (em R$)',
+            name: 'fee',
+            label: 'Taxa (em R$)',
             type: 'number',
 
+        },
+        {
+            name: 'minPrice',
+            label: 'Valor mínimo (em R$)',
+            type: 'number',
         }
     ],
 }

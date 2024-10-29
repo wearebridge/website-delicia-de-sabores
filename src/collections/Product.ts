@@ -1,6 +1,7 @@
 import { CollectionConfig, CollectionSlug } from 'payload'
 
 export type ProductType = {
+    id: string
     name: string
     price: number
     category: string
@@ -64,7 +65,6 @@ export const Product: CollectionConfig = {
             required: true,
             admin: {
                 condition: (_, siblingData) => {
-                    console.log(siblingData)
                     return siblingData.type === 'flavour'}
             }
         },

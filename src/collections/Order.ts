@@ -1,12 +1,15 @@
-import { CollectionConfig, CollectionSlug } from "payload";
-import payload from "payload";
-import { ProductType } from "./Product";
+import { CollectionConfig } from "payload";
+import { SelectProduct } from "../fields/SelectProduct";
 
 export const Order: CollectionConfig = {
     slug: "pedidos",
+    admin: {
+        useAsTitle: 'adress'
+    },
     labels: {
         singular: "Pedido",
         plural: "Pedidos",
+
     },
     fields: [
         {
@@ -24,92 +27,86 @@ export const Order: CollectionConfig = {
                     value: "completed"
                 }
             ],
-            defaultValue: "pending"
+            defaultValue: "pending",
+            admin: {
+                position: 'sidebar'
+            },
         },
         {
             name: "adress",
             label: "Endereço",
             type: 'text',
-            required: true
+            required: true,
+            admin: {
+                position: 'sidebar'
+            }
         },
         {
             name: "contactInfo",
             label: "Informação de contato",
             type: 'text',
-            required: true
+            required: true,
+            admin: {
+                position: 'sidebar'
+            }
+        },
+        {
+            name: 'paymentMethod',
+            label: 'Forma de pagamento',
+            type: 'select',
+            admin: {
+                position: 'sidebar'
+            },
+            required: true,
+            options: [
+                {
+                    label: 'Dinheiro',
+                    value: 'cash'
+                },
+                {
+                    label: 'Cartão',
+                    value: 'card'
+                },
+                {
+                    label: 'Pix',
+                    value: 'pix'
+                }
+            ]
         },
         {
             name: 'products',
-            labels: {
-                singular: 'Produto',
-                plural: 'Produtos',
-            },
+            label: 'Produtos',
             type: 'array',
             minRows: 1,
             fields: [
                 {
                     type: 'row',
                     fields: [
-                        {
-                            name: 'product',
-                            label: 'Produto',
-                            type: 'relationship',
-                            relationTo: 'produtos' as CollectionSlug,
-                            required: true,
-                            admin: {
-                                width: '50%',
-                            },
-                            hooks: {
-                                beforeChange: [async ({ value }) => {
-                                    if (value) {
-                                        const product = await payload.findByID({
-                                            collection: 'produtos' as CollectionSlug,
-                                            id: value
-                                        });
-                                        return product;
-                                    }
-                                    return value;
-                                }]
-                            }
-                        },
-                        {
-                            name: 'flavour',
-                            label: 'Sabor',
-                            type: 'relationship',
-                            relationTo: 'sabores' as CollectionSlug,
-                            admin: {
-                                width: '40%',
-                                condition: (data, siblingData, product) => {
-                                    console.log(siblingData)
-                                    return siblingData?.product?.type === 'flavour'
-                                }
-
-                            }
-                        },
-                        {
-                            name: 'description',
-                            label: 'Ingredientes',
-                            type: 'text',
-                            admin: {
-                                width: '40%',
-                                condition: (data, siblingData) => {
-                                    return siblingData?.product?.type === 'description'
-                                }
-
-                            }
-                        },
-                        {
-                            name: 'quantity',
-                            label: 'Quantidade',
-                            type: 'number',
-                            min: 1,
-                            admin: {
-                                width: '10%'
-                            }
-                        }
+                        SelectProduct,
                     ]
                 }
             ]
+        },
+        {
+            name: 'totalProductsPrice',
+            label: 'Valor do pedido (em R$)',
+            type: 'number',
+            required: true,
+            admin: {
+                position: 'sidebar',
+                components: {
+                    Field: '/fields/TotalPriceField'}
+            }
+        },
+        {
+            name: 'printButton',
+            type: 'ui',
+            admin: {
+                position: 'sidebar',
+                components: {
+                    Field: '/fields/PrintButton'
+                }
+            }
         }
     ],
 }
