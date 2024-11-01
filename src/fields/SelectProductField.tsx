@@ -75,7 +75,7 @@ const SelectProductField = () => {
 
           setSelectedProduct(product)
           setSelectedProductName(product.name)
-          setDescription(product.description || null)
+          setDescription(description || product.description || null)
 
           if (product.type === 'flavour' && product.flavour) {
             const flavourOptions = product.flavour.map((flavourItem: any) => ({
@@ -112,7 +112,6 @@ const SelectProductField = () => {
         quantity: parseInt(quantity, 10),
         totalProductsPrice: totalProductsPrice
       }
-
       setValue(newValue)
     }
   }, [selectedProduct, selectedProductName, selectedFlavour, description, quantity, totalProductsPrice, setValue])
@@ -147,7 +146,7 @@ const SelectProductField = () => {
                 <label className="field-label">
                   Descrição
                 </label>
-                <TextInput style={{ width: '100%' }} path={path} value={description || ''} readOnly onChange={(e: any) => setDescription(e.target.value)} />
+                <TextInput style={{ width: '100%' }} path={path} value={description || ''} onChange={(e: any) => setDescription(e.target.value)} />
               </>
             ) : (
               <div>
