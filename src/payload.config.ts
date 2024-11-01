@@ -15,11 +15,16 @@ import { DeliveryFee } from './globals/Delivery'
 import { Flavour } from './collections/Flavour'
 import { Product } from './collections/Product'
 import { Order } from './collections/Order'
+import { en } from '@payloadcms/translations/languages/en'
+import { pt } from '@payloadcms/translations/languages/pt'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  i18n: {
+    supportedLanguages: { en, pt}
+  },
   admin: {
     user: Users.slug,
     importMap: {
