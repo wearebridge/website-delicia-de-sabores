@@ -14,7 +14,6 @@ const TotalPriceField = () => {
             try {
                 const response = await fetch('/api/globals/deliveryFee')
                 const data = await response.json()
-                console.log(data)
                 setDeliveryFee(data.fee)
                 setMinPrice(data.minPrice)
             } catch (error) {
