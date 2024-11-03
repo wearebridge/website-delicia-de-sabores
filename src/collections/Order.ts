@@ -6,6 +6,9 @@ export const Order: CollectionConfig = {
     admin: {
         useAsTitle: 'adress'
     },
+    access: {
+        create: () => true
+    },
     labels: {
         singular: "Pedido",
         plural: "Pedidos",

@@ -16,6 +16,9 @@ export const Product: CollectionConfig = {
     admin: {
         useAsTitle: 'name'
     },
+    access: {
+        read: () => true
+    },
     labels: {
         singular: 'Produto',
         plural: 'Produtos',
