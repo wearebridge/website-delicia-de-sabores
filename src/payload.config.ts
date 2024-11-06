@@ -31,6 +31,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  defaultDepth: 2,
   collections: [Users, Media, Category, Flavour, Product, Order],
   globals: [Social, Whatsapp, DeliveryFee],
   editor: lexicalEditor(),
