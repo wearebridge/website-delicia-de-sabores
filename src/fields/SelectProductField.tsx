@@ -37,7 +37,7 @@ const SelectProductField = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/produtos?depth=0')
+        const response = await fetch('/api/produtos?depth=0&limit=25')
         const data = await response.json()
 
         const productOptions = data.docs.map((product: { name: string, id: string }) => ({
@@ -117,7 +117,7 @@ const SelectProductField = () => {
   }, [selectedProduct, selectedProductName, selectedFlavour, description, quantity, totalProductsPrice, setValue])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <div>
         <label className="field-label">
           Produto
