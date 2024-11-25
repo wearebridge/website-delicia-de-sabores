@@ -1,12 +1,27 @@
 import { fetchCategoryBySlug, fetchProductsByCategory } from '@/actions'
 import ProductCard from '@/components/ProductCard'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
   const slug = (await params).slug
+  if (!slug) {
+    redirect('/')
+  }
 
   const category = await fetchCategoryBySlug(slug)
+
+  if (!category) {
+    return (
+      <section className='w-full h-screen flex flex-col gap-4 justify-center items-center'>
+          <p>Parece que não tem nada aqui...</p>
+          <Link href={'/'}><Button>Voltar ao início</Button></Link>
+      </section>
+    )
+  }
 
   const products = await fetchProductsByCategory(category.id)
 
