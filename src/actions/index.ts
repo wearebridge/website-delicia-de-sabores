@@ -58,3 +58,12 @@ export const createOrder = async (order: any) => {
 
     return orderResult
 }
+
+export const fetchSocials = async () => {
+
+    const result = await payload.findGlobal({
+        slug: 'socials' as GlobalSlug
+    })
+
+    return result
+}
