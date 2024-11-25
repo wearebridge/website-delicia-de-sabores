@@ -5,16 +5,17 @@ import Link from 'next/link'
 import React from 'react'
 import { DropdownMenuItem } from './ui/dropdown-menu'
 import { useCart } from '@/context/cart'
+import Image from 'next/image'
 
 function Navbar({categories}: any) {
 
     const { cartQuantity } = useCart()
 
   return (
-    <div className='h-20 w-[100vw] bg-foreground flex items-center text-background'>
+    <div className='h-20 w-[100vw] bg-brand flex items-center text-background'>
         <div className='container flex justify-between items-center'>
             <Link href={'/'}>
-            <h1 className='text-base md:text-2xl font-semibold'>Sorveteria</h1>
+                <Image src={'/assets/logo.png'} alt='logo' width={60} height={60} quality={100} priority />
             </Link>
             <ul className='flex "gap-2 sm:gap-4 items-center text-sm md:text-lg'>
                 <li>
@@ -22,7 +23,7 @@ function Navbar({categories}: any) {
                         <DropdownMenuTrigger className='hover:bg-background/10 p-2 rounded-md'>
                             Produtos
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className='bg-foreground border-background border-2 rounded-md'>
+                        <DropdownMenuContent className='bg-brand border-background border-2 rounded-md'>
                             {categories.map((category: any) => (
                                 <DropdownMenuItem  key={category.name}>
                                     <Link href={category.slug}>
