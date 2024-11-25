@@ -199,7 +199,7 @@ export function ProductDetails({ product }: any) {
             <DialogFooter className='flex gap-4'>
               <DialogClose asChild>
                 <div className='flex gap-4'>
-                <Button variant={'outline'}>Cancelar</Button>
+                <Button type='button' variant={'outline'}>Cancelar</Button>
                 <Button type="submit">Adicionar</Button>
                 </div>
               </DialogClose>
