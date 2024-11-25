@@ -68,7 +68,8 @@ export function ProductDetails({ product }: any) {
         selectedFlavour: values.selectedFlavour,
         price: product.price,
         quantity: values.quantity,
-        totalProductsPrice: (product.price * values.quantity)
+        totalProductsPrice: (product.price * values.quantity),
+        productImage: product.image?.url || '/assets/placeholder.png'
       }
     })
 

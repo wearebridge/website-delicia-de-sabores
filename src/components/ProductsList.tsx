@@ -23,14 +23,16 @@ function ProductsList() {
       )
   }
 
+
   return (
     <div className='flex flex-col gap-4'>
         {cart.map((product: any, index) => (
+
             <Card key={index} className=''>
             <CardContent className='flex !p-1 md:!p-4 items-center gap-4 '>
                 <div className='aspect-square relative size-12 md:size-24'>
                 <Image
-                    src={`http://localhost:3000/api/media/file/bola-de-sorvete.jpg`}
+                    src={product.productSelect.productImage}
                     alt={product.productSelect.selectedProductName}
                     fill
                     className='object-center object-cover rounded-md'
