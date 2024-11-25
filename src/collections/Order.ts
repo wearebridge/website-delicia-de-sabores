@@ -45,15 +45,6 @@ export const Order: CollectionConfig = {
             }
         },
         {
-            name: "contactInfo",
-            label: "Informação de contato",
-            type: 'text',
-            required: true,
-            admin: {
-                position: 'sidebar'
-            }
-        },
-        {
             name: 'paymentMethod',
             label: 'Forma de pagamento',
             type: 'select',
@@ -75,6 +66,25 @@ export const Order: CollectionConfig = {
                     value: 'pix'
                 }
             ]
+        },
+        {
+            name: 'exchange',
+            label: 'Troco para (em R$)',
+            type: 'number',
+            required: true,
+            admin: {
+                position: 'sidebar',
+            },
+            defaultValue: 0
+        },
+        {
+            name: "contactInfo",
+            label: "Informação de contato",
+            type: 'text',
+            required: true,
+            admin: {
+                position: 'sidebar'
+            }
         },
         {
             name: 'products',
