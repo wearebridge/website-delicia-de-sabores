@@ -8,7 +8,7 @@ function Footer({socials}:any) {
         <div className='container h-full'>
             <div className=' flex justify-center items-center gap-8 h-full'>
                 {socials.links.map((link: any) => (
-                    <Link href={link.link.url} target='_blank' className='hover:underline text-background'>
+                    <Link href={link.link.url} key={link.link.url} target='_blank' className='hover:underline text-background'>
                         {link.link.text}
                     </Link>
                 ))}
