@@ -27,7 +27,9 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
   return (
     <section className='container mt-8'>
+      {/* @ts-ignore */}
       <h1 className='text-lg md:text-xl font-semibold'>{category.name}</h1>
+      {/* @ts-ignore */}
       <p className='text-foreground/50 text-base md:text-lg'>Aqui você confere tudo relacionado a {category.name}</p>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-8'>
         {products.map((product: any) => (
