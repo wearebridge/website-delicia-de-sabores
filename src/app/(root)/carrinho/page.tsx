@@ -74,7 +74,7 @@ function Page() {
         const selectedPayment = payments.find(payment => payment.value === data.doc.paymentMethod);
         const paymentLabel = selectedPayment ? selectedPayment.label : data.doc.paymentMethod
 
-        const message = encodeURIComponent(`Olá, acabei de fazer o pedido de ${data.doc.products.length} produto${data.doc.products.length > 1 ? 's' : ''}. O valor total foi de R$${(data.doc.totalProductsPrice + deliveryFee).toFixed(2)}, para ser entregue em: ${data.doc.adress}. Quero finalizar o pagamento via ${paymentLabel.toLowerCase()}`);
+        const message = encodeURIComponent(`Olá, acabei de fazer o pedido de ${data.doc.products.length} produto${data.doc.products.length > 1 ? 's' : ''}. O valor total foi de R$${(data.doc.totalProductsPrice).toFixed(2)}, para ser entregue em: ${data.doc.adress}. Quero finalizar o pagamento via ${paymentLabel.toLowerCase()}`);
         const whatsappUrl = `https://wa.me/${whatsapp}?text=${message}`;
 
         router.push(whatsappUrl)
