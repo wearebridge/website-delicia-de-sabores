@@ -40,6 +40,8 @@ const formSchema = z.object({
   quantity: z.coerce.number().int().positive(),
 })
 
+export const dynamic = "force-dynamic"
+
 export function ProductDetails({ product }: any) {
   const flavours = product.type === 'flavour'
     ? product.flavour.map((flave: any) => ({

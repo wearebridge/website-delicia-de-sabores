@@ -3,15 +3,9 @@ import { Card, CardContent } from './ui/card'
 import Image from 'next/image'
 import ProductDetails from './ProductDetails'
 
+export const dynamic = "force-dynamic"
+
 function ProductCard({product}: {product: any}) {
-
-  console.log(process.env.URL)
-  console.log(product.image?.url)
-
-
-  // const imageUrl = product.image?.url
-  //   ? `${process.env.URL}${product.image.url}`
-  //   : '/assets/placeholder.png'
 
   return (
     <Card>
