@@ -7,12 +7,20 @@ export const dynamic = "force-dynamic"
 
 function ProductCard({product}: {product: any}) {
 
+  console.log(product)
+  console.log('------------------')
+  console.log(product.image?.url)
+  console.log('------------------')
+  const imageUrl = product.image?.url ? `${process.env.URL}${product.image.url}` : '/assets/placeholder.png'
+
+  console.log(imageUrl)
+
   return (
     <Card>
         <CardContent className='flex flex-col aspect-square justify-center p-3 md:p-6'>
              <div className='min-h-48 h-full md:max-h-80 w-full relative mx-auto'>
                 <Image
-                    src={product.image?.url ? `${process.env.URL}${product.image.url}` : '/assets/placeholder.png'}
+                    src={imageUrl}
                     alt={product.name}
                     fill
                     className='object-center object-cover rounded-md'
