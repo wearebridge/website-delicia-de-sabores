@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
+export const revalidate = 60;
+
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
   const slug = (await params).slug

@@ -18,6 +18,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+export const revalidate = 60;
+
 const formSchema = z.object({
   adress: z.string().min(3, {
     message: 'Endereço inválido'}),
