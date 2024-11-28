@@ -6,9 +6,10 @@ function PrintedOrder({order}: any) {
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h2>Pedido para {order.adress}</h2>
       <p><strong>Contato:</strong> {order.contactInfo}</p>
-      <p><strong>Data:</strong> {order.createdAt}</p>
+      <p><strong>Data:</strong> {new Date(order.createdAt).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })}</p>
 
-      <h3>Produtos</h3>
+
+      <h3 style={{ marginTop: '20px' }}>Produtos</h3>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
@@ -19,19 +20,23 @@ function PrintedOrder({order}: any) {
           </tr>
         </thead>
         <tbody>
-          {order.products.map((product: any, index: number) => (
-            <tr key={index}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{product.productSelect.selectedProductName} {product.productSelect.selectedFlavour}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{product.productSelect.quantity}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'right' }}>
-                R${(product.productSelect.totalProductsPrice / product.productSelect.quantity).toFixed(2)}
-              </td>
-              <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'right' }}>
-                R${product.productSelect.totalProductsPrice.toFixed(2)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {order.products.map((product: any, index: number) => (
+          <tr key={index}>
+            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+              {product.selectedProductName} ({product.selectedFlavour})
+            </td>
+            <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
+              {product.quantity}
+            </td>
+            <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'right' }}>
+              R${(product.totalProductsPrice / product.quantity).toFixed(2)}
+            </td>
+            <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'right' }}>
+              R${product.totalProductsPrice.toFixed(2)}
+            </td>
+          </tr>
+        ))}
+      </tbody>
       </table>
 
       <h3 style={{ textAlign: 'right', marginTop: '20px' }}>

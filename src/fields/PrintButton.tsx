@@ -4,32 +4,29 @@ import { Button } from '@payloadcms/ui';
 import { useReactToPrint } from 'react-to-print';
 import PrintedOrder from '@/components/PrintableOrder';
 
+import { useAllFormFields } from '@payloadcms/ui'
+import { useEffect, useState } from 'react'
+
 const PrintButton = () => {
-    // Dados de exemplo para o pedido
+
+
+    const [fields, dispatchFields] = useAllFormFields()
+
     const order = {
-        adress: 'Rua Exemplo, 123',
-        contactInfo: '(11) 99999-9999',
-        createdAt: '2024-11-24',
-        products: [
-            {
-                productSelect: {
-                    selectedProductName: 'Sorvete',
-                    selectedFlavour: 'Chocolate',
-                    quantity: 2,
-                    totalProductsPrice: 40.0,
-                },
-            },
-            {
-                productSelect: {
-                    selectedProductName: 'Picolé',
-                    selectedFlavour: 'Morango',
-                    quantity: 3,
-                    totalProductsPrice: 15.0,
-                },
-            },
-        ],
-        totalProductsPrice: 55.0,
-    };
+        updatedAt: fields.updatedAt?.value,
+        createdAt: fields.createdAt?.value,
+        status: fields.status?.value,
+        adress: fields.adress?.value,
+        paymentMethod: fields.paymentMethod?.value,
+        exchange: fields.exchange?.value,
+        contactInfo: fields.contactInfo?.value,
+        totalProductsPrice: fields.totalProductsPrice?.value,
+        products: Object.keys(fields)
+          .filter((key) => key.startsWith("products.") && key.endsWith(".productSelect"))
+          .map((key) => fields[key]?.value)
+      };
+
+      console.log(order)
 
     const contentRef = useRef<HTMLDivElement>(null);
 
