@@ -120,33 +120,7 @@ function Page() {
             </DialogHeader>
             <Form {...form} >
               <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col gap-6'>
-                <FormField
-                  control={form.control}
-                  name="adress"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Endereço de entrega:</FormLabel>
-                      <FormControl>
-                        <Input type='text' {...field} placeholder='Bairro, rua, número da casa...' />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="contactInfo"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Informação de contato:</FormLabel>
-                      <FormControl>
-                        <Input type='text' {...field} placeholder='Seu número de celular' />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
+              <FormField
                   control={form.control}
                   name="paymentMethod"
                   render={({ field }) => (
@@ -221,6 +195,32 @@ function Page() {
                   />
                 )}
 
+                <FormField
+                  control={form.control}
+                  name="adress"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Endereço de entrega:</FormLabel>
+                      <FormControl>
+                        <Input type='text' {...field} placeholder='Bairro, rua, número da casa...' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="contactInfo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Informação de contato:</FormLabel>
+                      <FormControl>
+                        <Input type='text' {...field} placeholder='Seu número de celular' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <DialogFooter className='mt-8'>
                   <DialogClose asChild>
                     <div className='flex gap-4'>
