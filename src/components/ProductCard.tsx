@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Card, CardContent } from './ui/card'
 import Image from 'next/image'
@@ -7,13 +9,7 @@ export const dynamic = "force-dynamic"
 
 function ProductCard({product}: {product: any}) {
 
-  console.log(product)
-  console.log('------------------')
-  console.log(product.image?.url)
-  console.log('------------------')
-  const imageUrl = product.image?.url ? `${process.env.URL}${product.image.url}` : '/assets/placeholder.png'
-
-  console.log(imageUrl)
+  const imageUrl = product.image?.url ? `https://delicia-de-sabores.vercel.app${product.image.url}` : '/assets/placeholder.png'
 
   return (
     <Card>
