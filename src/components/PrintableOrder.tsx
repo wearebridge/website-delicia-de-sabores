@@ -5,15 +5,15 @@ function PrintedOrder({ order }: any) {
     <div
       style={{
         width: '58mm',
-        fontFamily: 'Arial, sans-serif',
-        fontSize: '14px', // Aumentando o tamanho da fonte
-        fontWeight: 900, // Usando peso mais forte para texto mais escuro
+        fontFamily: 'Courier New, monospace',
+        fontSize: '16px',
+        fontWeight: 900,
         padding: '0',
         boxSizing: 'border-box',
       }}
     >
       <div style={{ padding: '5mm' }}>
-        Pedido para: {order?.adress || 'Endereço não informado'}
+        Endereço: {order?.adress || 'Endereço não informado'}
         <br />
         Contato: {order?.contactInfo || 'Contato não informado'}
         <br />
@@ -39,7 +39,7 @@ function PrintedOrder({ order }: any) {
             }}
           >
             {product?.quantity || 0} {product?.selectedProductName || 'Produto não especificado'}{' '}
-            {product?.selectedFlavour ? `Sabor ${product.selectedFlavour}` : ''}
+            {product?.selectedFlavour ? `${product.selectedFlavour}` : ''}{' '}
             R${product?.totalProductsPrice?.toFixed(2) || '0.00'}
           </div>
         ))}
