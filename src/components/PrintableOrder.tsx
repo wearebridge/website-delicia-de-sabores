@@ -6,7 +6,8 @@ function PrintedOrder({ order }: any) {
       style={{
         width: '58mm',
         fontFamily: 'Arial, sans-serif',
-        fontSize: '12px',
+        fontSize: '14px', // Aumentando o tamanho da fonte
+        fontWeight: 'bold', // Negrito aplicado para melhor legibilidade
         padding: '0',
         boxSizing: 'border-box',
       }}
@@ -31,10 +32,14 @@ function PrintedOrder({ order }: any) {
 
       <div style={{ padding: '5mm' }}>
         {(order?.products || []).map((product: any, index: number) => (
-          <div key={index} style={{ marginBottom: '2mm' }}>
+          <div
+            key={index}
+            style={{
+              marginBottom: '5mm', // Adicionando mais espaço entre os produtos
+            }}
+          >
             {product?.quantity || 0} {product?.selectedProductName || 'Produto não especificado'}{' '}
             {product?.selectedFlavour ? `Sabor ${product.selectedFlavour}` : ''}
-            {' '}
             R${product?.totalProductsPrice?.toFixed(2) || '0.00'}
           </div>
         ))}
