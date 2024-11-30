@@ -5,7 +5,6 @@ import { useReactToPrint } from 'react-to-print';
 import PrintedOrder from '@/components/PrintableOrder';
 
 import { useAllFormFields } from '@payloadcms/ui'
-import { useEffect, useState } from 'react'
 
 const PrintButton = () => {
 
@@ -26,14 +25,11 @@ const PrintButton = () => {
           .map((key) => fields[key]?.value)
       };
 
-      console.log(order)
-
     const contentRef = useRef<HTMLDivElement>(null);
 
     const reactToPrintFn = useReactToPrint({
         contentRef: contentRef as React.RefObject<Element>,
         documentTitle: 'Pedido',
-        onAfterPrint: () => console.log('Impressão concluída!'),
     });
 
     return (
