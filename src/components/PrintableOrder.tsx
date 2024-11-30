@@ -7,7 +7,7 @@ function PrintedOrder({ order }: any) {
         width: '58mm',
         fontFamily: 'Arial, sans-serif',
         fontSize: '14px', // Aumentando o tamanho da fonte
-        fontWeight: 'bold', // Negrito aplicado para melhor legibilidade
+        fontWeight: 900, // Usando peso mais forte para texto mais escuro
         padding: '0',
         boxSizing: 'border-box',
       }}
