@@ -39,7 +39,6 @@ function Page() {
   const payments = [
     {value: 'pix', label: 'Pix'},
     {value: 'cash', label: 'Dinheiro'},
-    {value: 'card', label: 'Cartão'}
   ]
 
   async function onSubmit (values: z.infer<typeof formSchema>) {
