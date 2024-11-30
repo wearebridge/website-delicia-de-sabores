@@ -34,7 +34,7 @@ const PrintButton = () => {
 
     return (
         <div>
-            <div className='hidden'>
+            <div className='hidden max-w-[58mm]'>
             <div ref={contentRef}>
                 <PrintedOrder order={order} />
             </div>
