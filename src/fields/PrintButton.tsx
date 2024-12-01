@@ -20,6 +20,7 @@ const PrintButton = () => {
         adress: fields.adress?.value,
         paymentMethod: fields.paymentMethod?.value,
         exchange: fields.exchange?.value,
+        reference: fields.reference?.value,
         contactInfo: fields.contactInfo?.value,
         totalProductsPrice: fields.totalProductsPrice?.value,
         products: Object.keys(fields)

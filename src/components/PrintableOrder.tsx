@@ -1,6 +1,26 @@
 import React from 'react';
 
 function PrintedOrder({ order }: any) {
+  const getPaymentMethodLabel = (method: string | undefined) => {
+    switch (method) {
+      case 'card':
+        return 'Pagamento via cartão';
+      case 'cash':
+        return 'Pagamento via dinheiro';
+      case 'pix':
+        return 'Pagamento via pix';
+      default:
+        return 'Método de pagamento não informado';
+    }
+  };
+
+  const renderExchangeInfo = (paymentMethod: string | undefined, exchange: number) => {
+    if (paymentMethod === 'cash') {
+      return exchange > 0 ? `Troco para R$${exchange.toFixed(2)}` : 'Sem troco';
+    }
+    return null;
+  };
+
   return (
     <div
       style={{
@@ -39,7 +59,7 @@ function PrintedOrder({ order }: any) {
           <div
             key={index}
             style={{
-              marginBottom: '5mm', // Adicionando mais espaço entre os produtos
+              marginBottom: '5mm',
             }}
           >
             {product?.quantity || 0} {product?.selectedProductName || 'Produto não especificado'}{' '}
@@ -59,6 +79,11 @@ function PrintedOrder({ order }: any) {
 
       <div style={{ padding: '5mm', textAlign: 'right' }}>
         Total: R${order?.totalProductsPrice?.toFixed(2) || '0.00'}
+        <br />
+        {getPaymentMethodLabel(order?.paymentMethod)}
+        {order?.paymentMethod === 'cash' && (
+          <div>{renderExchangeInfo(order.paymentMethod, order.exchange)}</div>
+        )}
       </div>
     </div>
   );
