@@ -3,15 +3,17 @@ import React, { useRef } from 'react';
 import { Button } from '@payloadcms/ui';
 import { useReactToPrint } from 'react-to-print';
 import PrintedOrder from '@/components/PrintableOrder';
-
-import { useAllFormFields } from '@payloadcms/ui'
+import { useAllFormFields } from '@payloadcms/ui';
+import { usePathname } from 'next/navigation';
 
 const PrintButton = () => {
+    const pathname = usePathname();
+    const idFromUrl = pathname.split('/pedidos/')[1];
 
-
-    const [fields, dispatchFields] = useAllFormFields()
+    const [fields, dispatchFields] = useAllFormFields();
 
     const order = {
+        id: idFromUrl,
         updatedAt: fields.updatedAt?.value,
         createdAt: fields.createdAt?.value,
         status: fields.status?.value,
@@ -23,7 +25,7 @@ const PrintButton = () => {
         products: Object.keys(fields)
           .filter((key) => key.startsWith("products.") && key.endsWith(".productSelect"))
           .map((key) => fields[key]?.value)
-      };
+    };
 
     const contentRef = useRef<HTMLDivElement>(null);
 
@@ -35,9 +37,9 @@ const PrintButton = () => {
     return (
         <div>
             <div className='hidden max-w-[58mm]'>
-            <div ref={contentRef}>
-                <PrintedOrder order={order} />
-            </div>
+                <div ref={contentRef}>
+                    <PrintedOrder order={order} />
+                </div>
             </div>
             <Button type="button" onClick={() => reactToPrintFn?.()}>
                 Imprimir Pedido

@@ -13,7 +13,11 @@ function PrintedOrder({ order }: any) {
       }}
     >
       <div style={{ padding: '5mm' }}>
+        Pedido: {order?.id ? `${order.id.toString().slice(-3)}` : 'ID do pedido'}
+        <br />
         Endereço: {order?.adress || 'Endereço não informado'}
+        <br />
+        Referência: {order?.reference || 'Ponto de referência'}
         <br />
         Contato: {order?.contactInfo || 'Contato não informado'}
         <br />

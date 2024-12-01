@@ -45,6 +45,15 @@ export const Order: CollectionConfig = {
             }
         },
         {
+            name: "reference",
+            label: "Ponto de referência",
+            type: 'text',
+            required: true,
+            admin: {
+                position: 'sidebar'
+            }
+        },
+        {
             name: 'paymentMethod',
             label: 'Forma de pagamento',
             type: 'select',

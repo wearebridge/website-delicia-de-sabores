@@ -27,6 +27,8 @@ const formSchema = z.object({
     message: 'Informações de contato inválidas'
   }),
   paymentMethod: z.string().min(1),
+  reference: z.string().min(3, {
+    message: 'Referência inválida'}),
   exchange: z.string().min(1).default('0')
 })
 
@@ -47,8 +49,9 @@ function Page() {
       adress: values.adress,
       contactInfo: values.contactInfo,
       paymentMethod: values.paymentMethod,
-      exchange: values.exchange, // Incluindo o troco no pedido
+      exchange: values.exchange,
       products: cart,
+      reference: values.reference,
       totalProductsPrice: totalProductsPrice + deliveryFee,
     }
 
@@ -95,7 +98,8 @@ function Page() {
       adress: '',
       contactInfo: '',
       paymentMethod: 'pix',
-      exchange: '0'
+      exchange: '0',
+      reference: ''
     }
   })
 
@@ -204,6 +208,19 @@ function Page() {
                       <FormLabel>Endereço de entrega:</FormLabel>
                       <FormControl>
                         <Input type='text' {...field} placeholder='Bairro, rua, número da casa...' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="reference"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Ponto de referência:</FormLabel>
+                      <FormControl>
+                        <Input type='text' {...field} placeholder='Próximo à escola, posto de gasolina...' />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
